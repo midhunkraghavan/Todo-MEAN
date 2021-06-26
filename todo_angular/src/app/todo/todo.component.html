@@ -1,0 +1,19 @@
+<div id="myDIV" class="header">
+  <h2>My To Do List</h2>
+  <input #myInput type="text" placeholder="Add Item" class="ibox" onfocus="this.value=''" >
+  <span (click)="add(myInput.value)" class="addBtn" >Add</span>
+</div>
+<ul id="myUL">
+  <li *ngFor="let i of list">
+    
+      <input
+        type="checkbox"
+        [checked]="i.status === 'completed'"
+        (click)="update(i)"
+      />
+      
+      <span *ngIf="i.status === 'completed'" class="checked">{{ i.name }}</span>
+      <span *ngIf="i.status === 'active'" class="notchecked">{{ i.name }}</span> 
+      <button id="del" (click)="delete(i)" class="close">x</button>
+  </li>
+</ul>
